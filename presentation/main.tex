@@ -34,16 +34,6 @@
 %The next block of commands puts the table of contents at the 
 %beginning of each section and highlights the current section:
 
-\AtBeginSection[]
-{
-  \begin{frame}
-    \frametitle{Table of Contents}
-    \tableofcontents[currentsection]
-  \end{frame}
-}
-%------------------------------------------------------------
-
-
 \begin{document}
 
 \frame{\titlepage}
@@ -59,14 +49,80 @@
 
 \section{Classification}
 
+\subsection{Data}
 %---------------------------------------------------------
 \begin{frame}
-\frametitle{...}
+\frametitle{Dataset Description}
+The dataset contains 50,000 photos of 43 different German road signs.
+
+Dataset is available on Kaggle (\href{https://www.kaggle.com/datasets/meowmeowmeowmeowmeow/gtsrb-german-traffic-sign}{\underline{here}}).
+\begin{figure}[t]
+\includegraphics[width=6.5cm, height=3cm]{road-signs.jpg}
+\centering
+\end{figure}
 
 \end{frame}
 %---------------------------------------------------------
 
+\subsection{Data preparation}
+%---------------------------------------------------------
+\begin{frame}
+\frametitle{Data preparation}
+At the beginning, we conducted an initial data exploration, which allowed us to conclude that we have an unbalanced dataset. In addition, we have presented sample photos available in the dataset to show that not all signs seem to be very obvious.
+As part of the image preprocessing, we took the following steps:
+\begin{itemize}
+    \item<1-> photos were scaled to a resolution of 32x32
+    \item<1-> converted to grayscale
+    \item<1-> pixels were flattend and normalized to values between 0-1 
+\end{itemize}
+Due to the lack of a validation set, it was decided to divide the training set in the proportion of 80\%/20\%. Thanks to this, we have obtained 3 independent harvests.
+Then, depending on the algorithm used, we additionally transformed the dependent variable.
+\end{frame}
+%---------------------------------------------------------
 
+\subsection{Modelling}
+%---------------------------------------------------------
+\begin{frame}
+\frametitle{Modelling part}
+We used 3 different classification algorithms for modelling:
+\begin{itemize}
+    \item<1-> Random Forest
+    \item<1-> LightGBM
+    \item<1-> CNN (based on LeNet-5 architecture)
+\end{itemize}
+
+Accuracy was used as a performance metric, but a confusion matrix and a classification report were also built for each model.\\
+\vspace{2mm}
+In the case of the first two algorithms, Randomized Search Cross Validation was used to find the optimal hyperparameters.\\
+\vspace{2mm}
+For neural network, it was decided to use different convolution values and monitored the value of the loss function of the validation set.
+\end{frame}
+%---------------------------------------------------------
+
+\subsection{Results}
+%---------------------------------------------------------
+\begin{frame}
+\frametitle{Results}
+Both the selection of hyperparameters and the training itself took a long time, therefore, when checking, we recommend using the models already saved by us with the appropriate parameters.\\
+\vspace{2mm}
+\begin{itemize}
+    \item<1-> Random Forest\\
+    Validation: 61\%; Test: 51\%\\
+    \item<1-> LightGBM\\
+    Validation: 86\%; Test: 68\%
+    \item<1-> CNN (based on LeNet-5 architecture)\\
+    Validation: 97\%; Test: 89\%
+\end{itemize}
+\vspace{2mm}
+Possibilities to improve the model:
+\begin{itemize}
+    \item<1-> Data augmentation
+    \item<1-> Creating a larger CNN architecture
+    \item<1-> Use of transfer learning*
+\end{itemize}
+
+\end{frame}
+%---------------------------------------------------------
 
 \section{Regression}
 
