@@ -68,13 +68,15 @@ Dataset is available on Kaggle (\href{https://www.kaggle.com/datasets/meowmeowme
 %---------------------------------------------------------
 \begin{frame}
 \frametitle{Data preparation}
-At the beginning, we conducted an initial data exploration, which allowed us to conclude that we have an unbalanced dataset. In addition, we have presented sample photos available in the dataset to show that not all signs seem to be very obvious.
+At the beginning, we conducted an initial data exploration, which allowed us to conclude that we have an unbalanced dataset. In addition, we have presented sample photos available in the dataset to show that not all signs seem to be very obvious.\\
+\vspace{2mm}
 As part of the image preprocessing, we took the following steps:
 \begin{itemize}
     \item<1-> photos were scaled to a resolution of 32x32
     \item<1-> converted to grayscale
     \item<1-> pixels were flattend and normalized to values between 0-1 
 \end{itemize}
+\vspace{2mm}
 Due to the lack of a validation set, it was decided to divide the training set in the proportion of 80\%/20\%. Thanks to this, we have obtained 3 independent harvests.
 Then, depending on the algorithm used, we additionally transformed the dependent variable.
 \end{frame}
