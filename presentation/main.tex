@@ -19,9 +19,9 @@
 \author[Artur Skowroński, Szymon Socha] % (optional)
 {Artur Skowroński, Szymon Socha}
 
-\date[date] % (optional)
-\today
-%{January 17, 2023}
+\date[January 24, 2023] % (optional)
+%\today
+{January 24, 2023}
 
 \logo{\includegraphics[height=.75cm]{wne-logo-new-en.png}}
 
@@ -34,16 +34,26 @@
 %The next block of commands puts the table of contents at the 
 %beginning of each section and highlights the current section:
 
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Table of Contents}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+%------------------------------------------------------------
+
+
 \begin{document}
 
 \frame{\titlepage}
 
 
 %---------------------------------------------------------
-\begin{frame}
-\frametitle{Table of Contents}
-\tableofcontents
-\end{frame}
+%\begin{frame}
+%\frametitle{Table of Contents}
+%\tableofcontents
+%\end{frame}
 %---------------------------------------------------------
 
 
@@ -230,16 +240,6 @@ Below is a table with a comparison of model performance with actual values for r
 \includegraphics[width=6.5cm]{regression_final_performance_table.png}
 \centering
 \end{figure}
-\end{frame}
-%---------------------------------------------------------
-
-
-\section{Summary}
-
-%---------------------------------------------------------
-\begin{frame}
-\frametitle{Summary}
-
 \end{frame}
 %---------------------------------------------------------
 
