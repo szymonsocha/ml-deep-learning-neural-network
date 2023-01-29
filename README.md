@@ -29,10 +29,10 @@ Dataset is available on Kaggle [here](https://www.kaggle.com/datasets/muhammetva
 
 #### Data preparation
 
-In order to prepare the data, we perform \textbf{EDA}. We also perform **feature engineering**:
+In order to prepare the data, we perform **EDA**. We also perform **feature engineering**:
 - We extract the screen type and resolution from the `ScreenResolution` column
-- From the \texttt{GPU} column, we extract the processor model and processor clocking
-- From the \texttt{Memory} column, we extract whether the laptop has two drives or one, what type and what capacity
+- From the `GPU` column, we extract the processor model and processor clocking
+- From the `Memory` column, we extract whether the laptop has two drives or one, what type and what capacity
 
 We note that the variable `Price euros` is right-skewed. We logarithmize this variable to give it a distribution closer to the normal distribution.
 After feature engineering, we divide the dataset into a training set and a test set. We use the test dataset later **only** for performance comparison of finished models.
