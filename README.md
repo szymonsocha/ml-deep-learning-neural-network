@@ -1,5 +1,5 @@
 # ml-deep-learning-neural-network
-Comparison of neural network performanc with other ML methods for two different types of data (image classification and regression)
+Comparison of neural network performanc with other ML methods for two different types of data (image classification and regression).
 
 ## Classification
 
@@ -7,7 +7,45 @@ Comparison of neural network performanc with other ML methods for two different 
 
 ## Regression
 
-*WIP*
+### Data
+
+#### Dataset Description
+
+The dataset contains information about the specifications of laptops and their prices given in Euros. The dataset contains 1320 observations and 13 columns describing the specifications of the laptops:
+- **Company** - *string* - Laptop Manufacturer
+- **Product** - *string* - Brand and Model
+- **TypeName** - *string* - Type (Notebook, Ultrabook, Gaming, etc.)
+- **Inches** - *numeric* - Screen Size
+- **ScreenResolution** - *string* - Screen Resolution
+- **Cpu** - *string* - Central Processing Unit (CPU)
+- **Ram** - *string* - Laptop RAM
+- **Memory** - *string* - Hard Disk / SSD Memory
+- **GPU** - *string* - Graphics Processing Units (GPU)
+- **OpSys** - *string* - Operating System
+- **Weight** - *string* - Laptop Weight
+- **Price euros** - *numeric* - Price (Euro)
+ 
+Dataset is available on Kaggle [here](https://www.kaggle.com/datasets/muhammetvarl/laptop-price).
+
+#### Data preparation
+
+In order to prepare the data, we perform \textbf{EDA}. We also perform **feature engineering**:
+- We extract the screen type and resolution from the `ScreenResolution` column
+- From the \texttt{GPU} column, we extract the processor model and processor clocking
+- From the \texttt{Memory} column, we extract whether the laptop has two drives or one, what type and what capacity
+
+We note that the variable `Price euros` is right-skewed. We logarithmize this variable to give it a distribution closer to the normal distribution.
+After feature engineering, we divide the dataset into a training set and a test set. We use the test dataset later **only** for performance comparison of finished models.
+
+On the training set, we remove one **outlier**. Originally in the dataset there is one laptop with 64GB RAM, which looks like a very powerful, expensive, gaming laptop. We remove this observation.
+
+### Algorithms considered:
+
+* **Random Forest**
+* XGBoost
+* Neural Network
+
+To tune hyperparameters, we perform **Randomized Search Cross Validation** for each algorithm. Additionally, for Neural Network we standarize values at each fold (in order to **prevent data leakage**) with a use of [scaler](https://github.com/szymonsocha/ml-deep-learning-neural-network/blob/main/regression/scaler/sc_nn.pkl). Later, we use the same scaler on the test set.
 
 ### Results
 
