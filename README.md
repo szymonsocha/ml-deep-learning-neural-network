@@ -3,7 +3,7 @@ Comparison of neural network performanc with other ML methods for two different 
 
 ## Classification
 
-### Dataset Description
+### Dataset description
 
 The dataset comes from [Kaggle](https://www.kaggle.com/datasets/meowmeowmeowmeowmeow/gtsrb-german-traffic-sign) contains 50000 photos of 43 different German road signs.
 
