@@ -48,7 +48,7 @@ Data augmentation definitely decrease the overall performance, which may be due 
 
 ### Data
 
-#### Dataset Description
+#### Dataset description
 
 The dataset contains information about the specifications of laptops and their prices given in Euros. The dataset contains 1320 observations and 13 columns describing the specifications of the laptops:
 - **Company** - *string* - Laptop Manufacturer
