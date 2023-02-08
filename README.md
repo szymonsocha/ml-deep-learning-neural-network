@@ -3,7 +3,46 @@ Comparison of neural network performanc with other ML methods for two different 
 
 ## Classification
 
-*WIP*
+### Dataset Description
+
+The dataset comes from [Kaggle](https://www.kaggle.com/datasets/meowmeowmeowmeowmeow/gtsrb-german-traffic-sign) contains 50000 photos of 43 different German road signs.
+
+### Dataset preparation
+
+At the beginning, we conducted an initial data exploration, which allowed us to conclude that we have an unbalanced dataset. In addition, we have presented sample photos available in the dataset to show that not all signs seem to be very obvious.
+
+As part of the image preprocessing, we took the following steps:
+- photos were rescaled to a resolution of 32x32
+- converted to grayscale
+- pixels were flattened and normalized to values between 0-1
+
+Due to the lack of a validation set, it was decided to divide the training set in the proportion of 80\%/20\%. Thanks to this, we have obtained 3 independent datasets.
+Then, depending on the algorithm used, we additionally transformed the dependent variable.
+
+### Modelling part
+
+We used 4 different classification algorithms for modelling:
+- Random Forest
+- LightGBM
+- Convolutional Neural Network (based on LeNet-5 architecture)
+- CNN with augmented data (for the best CNN architecture)
+
+Accuracy was used as a performance metric, but a confusion matrix and a classification report were also built for each model.
+In the case of the first two algorithms, Randomized Search Cross Validation was used to find the optimal hyperparameters.
+For neural network, it was decided to use different convolution values and monitored the value of the loss function of the validation set.
+
+### Results
+
+|                |   Valid | Test |
+|---------------:|-------:|----:|
+| Random Forest  |  61% | 51% |
+| LightGBM        | 86% | 68% |
+| CNN (based on LeNet-5) |  97% | 87% |
+| CNN with augmented data |  77% | 48% |
+
+Data augmentation definitely decrease the overall performance, which may be due to:
+- our model has simply too small capacity and it's not able to learn all the patterns in our new data
+- despite the exclusion of flips, it is possible that there are other parameters that we have overlooked that cause us to create new road signs with a completely different meaning.
 
 ## Regression
 
